@@ -219,8 +219,9 @@ def seq2text(input_seq):
             newString = newString + reverse_source_word_index[i] + ' '
     return newString
 
-
-for i in range(0, 50):
+rouge_values = []
+for i in range(0, len(y_tr) - 1):
+    print(i)
     original = seq2summary(y_tr[i])
     predicted = decode_sequence(x_tr[i].reshape(1, max_text_len))
     print("Review:", seq2text(x_tr[i]))
@@ -228,4 +229,9 @@ for i in range(0, 50):
     print("Predicted summary:", predicted)
     score_rouge = rouge.get_scores(predicted, original)
     print("ROUGE: ", score_rouge[0]['rouge-1']['f'])
+    rouge_values.append(score_rouge[0]['rouge-1']['f'])
     print("\n")
+import pickle
+with open("rouge_score.txt", "wb") as fp:
+    pickle.dump(rouge_values, fp)
+
