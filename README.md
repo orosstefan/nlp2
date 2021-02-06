@@ -1,1 +1,5 @@
-# nlp2
+# NLP project
+* David Jitca
+* Gabriel Dumitrescu
+* Stefan Oros
+
